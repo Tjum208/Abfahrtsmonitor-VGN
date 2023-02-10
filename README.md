@@ -2,6 +2,7 @@
 Ein Abfahrtsmonitor für den VGN. 
 
 Dieses Script fügt ein Widget auf euren Home Bildschirm mit den nächsten Abfahrten an einem bestimmten Haltepunkt hinzu. 
+
 Das Widget gibt die Nächsten 2 Abfahrten mit Verspätung auf Sekunden genau angegeben.
 
 ![image](https://user-images.githubusercontent.com/95881893/218197171-b322f143-a2ef-42f8-91cf-907d40f70fd3.png)
