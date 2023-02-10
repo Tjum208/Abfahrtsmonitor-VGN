@@ -16,7 +16,7 @@ async function createWidget() {
   /////////////////////CONFIG////////////////////
   ///////////////////////////////////////////////
 
-  let numhst = "2164"; //Beachte Halt_ID aus Tabelle
+  let hstid = "2164"; //Beachte Halt_ID aus Tabelle
   let product = "bus"; // Ubahn | Bus | Tram
 
   ///////////////////////////////////////////////
@@ -38,7 +38,7 @@ async function createWidget() {
   row.addText("Filtern nach Linien").centerAligned();
   line = "0"; // Falls Fehler line = 0
 
-  if (numhst == "2164") {
+  if (hstid == "2164") {
     //Check für Rathaus Fürth
     ///33
     row = new UITableRow();
@@ -135,7 +135,7 @@ ui.addRow(row);
 
 console.log(numhst)*/
   }
-  let hst = await loadDocs([numhst, product]);
+  let hst = await loadDocs([hstid, product]);
 
   await ui.present();
 
@@ -544,13 +544,7 @@ function checkupline([hst, linie]) {
     if (hst.Abfahrten[0].Linienname == linie) {
       var result1 = 0;
 
-      for (
-        let cnt = 1;
-        hst.Abfahrten[cnt].Linienname != linie &&
-        linecount >= cnt &&
-        fehler != 1;
-        cnt++
-      ) {
+      for (let cnt = 1; hst.Abfahrten[cnt].Linienname != linie && linecount >= cnt && fehler != 1; cnt++) {
         var next = cnt + 1;
         if (next == linecount - 1) {
           console.log("KEINE ABFAHRTEN FÜR LINIE " + linie);
@@ -559,11 +553,7 @@ function checkupline([hst, linie]) {
         var result2 = cnt + 1;
       }
     } else {
-      for (
-        let ply = 0;
-        hst.Abfahrten[ply].Linienname != linie && linecount >= ply;
-        ply++
-      ) {
+      for (let ply = 0; hst.Abfahrten[ply].Linienname != linie && linecount >= ply; ply++) {
         if (ply == linecount - 1) {
           console.log("KEINE ABFAHRTEN FÜR LINIE " + linie);
           var fehler = 1;
@@ -573,15 +563,11 @@ function checkupline([hst, linie]) {
         var fehler = 0;
       }
       for (
-        let cnt = result1 + 1;
-        hst.Abfahrten[cnt].Linienname != linie &&
-        linecount >= cnt &&
-        fehler != 1;
-        cnt++
-      ) {
-        if (next == linecount - 1) {
+        let cnt = result1 +1; hst.Abfahrten[cnt].Linienname != linie && linecount >= cnt && fehler != 1; cnt++) {
+        if (cnt == linecount - 1) {
           console.log("KEINE ABFAHRTEN FÜR LINIE " + linie);
-          return "error";
+          var result2 = next + 1
+          return //"error";
         }
         var result2 = cnt + 1;
       }
