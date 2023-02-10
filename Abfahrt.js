@@ -16,7 +16,7 @@ async function createWidget() {
   /////////////////////CONFIG////////////////////
   ///////////////////////////////////////////////
 
-  let numhst = "2659"; //Beachte Halt_ID aus Tabelle
+  let numhst = "2164"; //Beachte Halt_ID aus Tabelle
   let product = "bus"; // Ubahn | Bus | Tram
 
   ///////////////////////////////////////////////
